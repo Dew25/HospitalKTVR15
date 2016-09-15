@@ -1,6 +1,7 @@
 package hospital.classes;
 
 import interfaces.Employee;
+import java.util.Iterator;
 import java.util.List;
 
 public class Staff extends Person implements Employee {
@@ -52,7 +53,14 @@ public class Staff extends Person implements Employee {
 
     @Override
     public String toString() {
-        return "Staff{" + "salary=" + salary + ", position=" + position + ", division=" + division + ", wards=" + wards + '}';
+        Iterator iter = wards.iterator();
+        StringBuffer strWards = new StringBuffer();
+        int i=0;
+        while(iter.hasNext()){
+            strWards.append(iter.next());
+            i++;
+        }
+        return "Персонал: "+super.getName()+" "+super.getSurname()+"\n   зарплата: " + salary + ",\n   должность: " + position.getPositionName() + ",\n  отделение: " + division.getDivisionName() + ",\n   Палаты ("+i+"): " + strWards.toString() + "\n";
     }
     
 }

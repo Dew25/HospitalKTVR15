@@ -1,19 +1,22 @@
 package hospital.classes;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Ward {
 
     private String wardName;
     private List<Pacient> pacients;
+    private Division division;
     
 
     public Ward() {
     }
 
     public Ward(String wardName, List<Pacient> pacients) {
-        this.wardName = wardName;
-        this.pacients = pacients;
+        this.setWardName(wardName);
+        this.setPacients(pacients);
+        this.setDivision(division);
         
     }
 
@@ -33,10 +36,21 @@ public class Ward {
         this.pacients = pacients;
     }
 
-   
+    private void setDivision(Division division) {
+        this.division=division;
+    }
     @Override
     public String toString() {
-        return "Ward{" + "wardName=" + wardName + ", pacients=" + pacients + '}';
+        Iterator iter = pacients.iterator();
+        StringBuffer str = new StringBuffer();
+        int i=0;
+        while(iter.hasNext()){
+            str.append(iter.next());
+            i++;
+        }
+        return "   Информация о палате: " + wardName + ",\n   Пациенты в палате:\n   всего: "+i+"\n   " + str.toString();
     }
+
+    
     
 }

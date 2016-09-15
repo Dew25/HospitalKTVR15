@@ -87,7 +87,7 @@ public class Person implements Peaple {
 
     @Override
     public String toString() {
-        return "Person{" + "name=" + name + ", surname=" + surname + ", code=" + code + ", age=" + age + ", birthdey=" + birthdey + ", gender=" + gender +'}';
+        return "Person:\n name=" + name + ",\n surname=" + surname + ",\n code=" + code + ",\n age=" + age + ",\n birthdey=" + birthdey + ",\n gender=" + gender;
     }
     
 }

@@ -9,7 +9,7 @@ public class Division {
     }
 
     public Division(String divisionName) {
-        this.divisionName = divisionName;
+        this.setDivisionName(divisionName);
         //this.wards = wards;
     }
 
@@ -28,5 +28,10 @@ public class Division {
 //    public void setWards(List<Ward> wards) {
 //        this.wards = wards;
 //    }
+
+    @Override
+    public String toString() {
+        return "отделение: " + divisionName;
+    }
     
 }

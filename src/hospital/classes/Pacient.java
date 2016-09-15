@@ -9,20 +9,19 @@ public class Pacient extends Person {
     private Date departure;
     private Doctor doctor;
     private Division division;
-    private Ward ward;
+ 
 
     public Pacient() {
     }
 
 
-    public Pacient(String diagnos, Date arrive, Date departure, Doctor doctor, Division division, Ward ward, String name, String surname, String code) {
+    public Pacient(String diagnos,Doctor doctor, Date arrive, Date departure, Division division, String name, String surname, String code) {
         super(name, surname, code);
-        this.diagnos = diagnos;
-        this.arrive = arrive;
-        this.departure = departure;
-        this.doctor = doctor;
-        this.division = division;
-        this.ward = ward;
+        this.setDiagnos(diagnos);
+        this.setArrive(arrive);
+        this.setDeparture(departure);
+        this.setDoctor(doctor);
+        this.setDivision(division);
     }
 
 
@@ -67,17 +66,10 @@ public class Pacient extends Person {
         this.division = division;
     }
 
-    public Ward getWard() {
-        return ward;
-    }
-
-    public void setWard(Ward ward) {
-        this.ward = ward;
-    }
 
     @Override
     public String toString() {
-        return "Pacient{" + "diagnos=" + diagnos + ", arrive=" + arrive + ", departure=" + departure + ", doctor=" + doctor + ", division=" + division + ", ward=" + ward + '}';
+        return "\nПациент: \n "+super.getName()+" "+super.getSurname()+", воздаст "+super.getAge()+",\n Диагнос: " + diagnos + ",\n Больной поступил:" + arrive.toString() + ",\n Больной выписался:" + departure.toString() + ",\n   Лечащий доктор:" + doctor.getName()+" "+doctor.getSurname() + ",\n Отделение:\n   " + division.getDivisionName()+"\n";
     }
     
 }
