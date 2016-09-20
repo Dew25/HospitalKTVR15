@@ -1,26 +1,40 @@
-package hospital.classes;
+package entity;
 
 
 import interfaces.Peaple;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import util.ParseCode;
 
-public class Person implements Peaple {
 
-    private String name;
-    private String surname;
+@Entity
+public class Person implements Peaple {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String firstname;
+    private String lastname;
     private String code;
+    @Transient
     private Integer age;
+    @Transient
     private String birthdey;
+    @Transient
     private String gender;
+    @Transient
     private ParseCode parseCode;
     
     
     public Person() {
     }
 
-    public Person(String name, String surname, String code) {
-        this.setName(name);
-        this.setSurname(surname);
+    public Person(String firstname, String lastname, String code) {
+        this.setFirstname(firstname);
+        this.setLastname(lastname);
         this.setCode(code);
         this.parseCode = new ParseCode(this.code);
         this.setAge(this.parseCode);
@@ -40,13 +54,13 @@ public class Person implements Peaple {
     }
 
     @Override
-    public String getName() {
-        return this.name;
+    public String getFirstname() {
+        return this.firstname;
     }
 
     @Override
-    public String getSurname() {
-        return this.surname;
+    public String getLastname() {
+        return this.lastname;
     }
 
     @Override
@@ -54,12 +68,12 @@ public class Person implements Peaple {
         return this.code;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setCode(String code) {
@@ -87,7 +101,7 @@ public class Person implements Peaple {
 
     @Override
     public String toString() {
-        return "Person:\n name=" + name + ",\n surname=" + surname + ",\n code=" + code + ",\n age=" + age + ",\n birthdey=" + birthdey + ",\n gender=" + gender;
+        return "Person:\n name=" + firstname + ",\n surname=" + lastname + ",\n code=" + code + ",\n age=" + age + ",\n birthdey=" + birthdey + ",\n gender=" + gender;
     }
     
 }

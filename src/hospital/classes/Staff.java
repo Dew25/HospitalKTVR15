@@ -1,25 +1,25 @@
 package hospital.classes;
 
+import entity.Person;
 import interfaces.Employee;
-import java.util.Iterator;
-import java.util.List;
+
 
 public class Staff extends Person implements Employee {
 
     private Integer salary;
     private Position position;
-    private Division division;
-    private List<Ward> wards;
+//    private Division division;
+//    private List<Ward> wards;
 
     public Staff() {
     }
 
-    public Staff(Integer salary, Position position, Division division, List<Ward> wards, String name, String surname, String code) {
+    public Staff(Integer salary, Position position, String name, String surname, String code) {
         super(name, surname, code);
         this.salary = salary;
         this.position = position;
-        this.division = division;
-        this.wards = wards;
+//        this.division = division;
+//        this.wards = wards;
     }
 
     @Override
@@ -35,32 +35,28 @@ public class Staff extends Person implements Employee {
         this.position = position;
     }
 
-    public Division getDivision() {
-        return division;
-    }
+//    public Division getDivision() {
+//        return division;
+//    }
+//
+//    public void setDivision(Division division) {
+//        this.division = division;
+//    }
 
-    public void setDivision(Division division) {
-        this.division = division;
-    }
-
-    public List<Ward> getWards() {
-        return wards;
-    }
-
-    public void setWards(List<Ward> wards) {
-        this.wards = wards;
-    }
+//    public List<Ward> getWards() {
+//        return wards;
+//    }
+//
+//    public void setWards(List<Ward> wards) {
+//        this.wards = wards;
+//    }
 
     @Override
     public String toString() {
-        Iterator iter = wards.iterator();
-        StringBuffer strWards = new StringBuffer();
-        int i=0;
-        while(iter.hasNext()){
-            strWards.append(iter.next());
-            i++;
-        }
-        return "Персонал: "+super.getName()+" "+super.getSurname()+"\n   зарплата: " + salary + ",\n   должность: " + position.getPositionName() + ",\n  отделение: " + division.getDivisionName() + ",\n   Палаты ("+i+"): " + strWards.toString() + "\n";
+         return "Персонал: "
+                 +super.getFirstname()+" "+super.getLastname()
+                 +"\n   зарплата: " + getSalary() 
+                 + ",\n   должность: " + getPosition().getPositionName();
     }
     
 }

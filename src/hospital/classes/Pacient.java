@@ -1,5 +1,6 @@
 package hospital.classes;
 
+import entity.Person;
 import java.util.Date;
 
 public class Pacient extends Person {
@@ -9,19 +10,20 @@ public class Pacient extends Person {
     private Date departure;
     private Doctor doctor;
     private Division division;
- 
+    private Ward ward;
 
     public Pacient() {
     }
 
 
-    public Pacient(String diagnos,Doctor doctor, Date arrive, Date departure, Division division, String name, String surname, String code) {
+    public Pacient(String diagnos, Date arrive, Date departure, Division division,Doctor doctor, Ward ward, String name, String surname, String code) {
         super(name, surname, code);
         this.setDiagnos(diagnos);
         this.setArrive(arrive);
         this.setDeparture(departure);
         this.setDoctor(doctor);
         this.setDivision(division);
+        this.setWard(ward);
     }
 
 
@@ -66,10 +68,24 @@ public class Pacient extends Person {
         this.division = division;
     }
 
+    public Ward getWard() {
+        return ward;
+    }
+
+    public void setWard(Ward ward) {
+        this.ward = ward;
+    }
+
 
     @Override
     public String toString() {
-        return "\nПациент: \n "+super.getName()+" "+super.getSurname()+", воздаст "+super.getAge()+",\n Диагнос: " + diagnos + ",\n Больной поступил:" + arrive.toString() + ",\n Больной выписался:" + departure.toString() + ",\n   Лечащий доктор:" + doctor.getName()+" "+doctor.getSurname() + ",\n Отделение:\n   " + division.getDivisionName()+"\n";
+        return "Пациент: "+super.getFirstname()+" "+super.getLastname()+
+                ",\n  Воздаст "+super.getAge()+
+                ",\n  Диагнос: " + getDiagnos() + 
+                ",\n  Больной поступил: " + getArrive().toString() +
+                ",\n  Больной выписался: " + getDeparture().toString() + 
+                ",\nОтделение: " + getDivision().getDivisionName()+
+                ",\nДоктор:"+getDoctor().getFirstname()+" "+getDoctor().getLastname();
     }
     
 }
